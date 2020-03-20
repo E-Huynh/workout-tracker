@@ -16,6 +16,10 @@ const excerciseSchema = new Schema({
     type: Number,
     required: "Enter a number of reps"
   },
+  weight: {
+    type: Number,
+    required: "Enter a weight"
+  },
   isComplete: {
     type: Boolean,
     default: false
