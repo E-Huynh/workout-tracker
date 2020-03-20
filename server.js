@@ -48,6 +48,8 @@ db.workout.find({})
   .populate('excercises')
   .then(dbWorkout => {
     console.log('--------TEST POPULATE: ', dbWorkout)
+    console.log('--------EXCERCISES NAME: ', dbWorkout[0].name)
+    console.log('--------EXCERCISES ARRAY: ', dbWorkout[0].excercises)
   })
   .catch(err => {
     console.log('--------ERROR: ', err)
