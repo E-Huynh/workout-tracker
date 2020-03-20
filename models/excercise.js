@@ -30,6 +30,6 @@ const excerciseSchema = new Schema({
   }
 });
 
-const excercise = mongoose.model("excercise", excerciseSchema);
+const Excercise = mongoose.model("Excercise", excerciseSchema);
 
-module.exports = excercise;
+module.exports = Excercise;
