@@ -1,4 +1,4 @@
-const db = require('../models')
+const db = require('../models');
 // Creation of a test workout schema
 module.exports = {
     create: function (req, res) {
