@@ -3,10 +3,10 @@ const db = require('../models');
 module.exports = {
     create: function (req, res) {
         db.workout
-            .create(req.body);
+            .create(req.body)
             .then(dbWorkout => {
                 res.status(200).json(dbWorkout);
-            });
+            })
             .catch(err => res.status(422).json(err));
     },
     find: function (req, res) {
