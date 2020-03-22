@@ -1,9 +1,8 @@
 const router = require('express').Router();
 const workoutController = require('../../controllers/workout')
 
+// route matches '/api/create/'
 router.route('/')
-    .get(function (){
-        console.log('Hitting /api/create')
-    });
+    .get(workoutController.create);
 
 module.exports = router;

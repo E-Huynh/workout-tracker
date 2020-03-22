@@ -3,7 +3,13 @@ const db = require('../models');
 module.exports = {
     create: function (req, res) {
         // create logic
-        console.log('workout create method called');
+        // console.log('req: ', req.body);
+        db.workout
+            .create({name: 'purple'})
+            .then(dbWorkout => {
+                res.status(200).json(dbWorkout);
+            })
+            .catch(err => res.status(422).json(err));
     },
     find: function (req, res) {
         // find logic
