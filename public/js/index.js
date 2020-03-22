@@ -1,6 +1,6 @@
 
 $(document).ready(function () {
-    $('#new').on('click', function() {
+    $('#newWorkout').on('click', function() {
         $.get('/api/create', function(data){
             console.log('data: ', data)
         })
