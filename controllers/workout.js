@@ -2,10 +2,9 @@ const db = require('../models');
 // Creation of a test workout schema
 module.exports = {
     create: function (req, res) {
-        // create logic
-        // console.log('req: ', req.body);
+        const name = req.body
         db.workout
-            .create({name: 'yellow'})
+            .create(name)
             // if create was successful
             .then(dbWorkout => {
                 res.status(200).json(dbWorkout);

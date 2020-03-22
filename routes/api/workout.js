@@ -3,6 +3,6 @@ const workoutController = require('../../controllers/workout')
 
 // route matches '/api/create/'
 router.route('/')
-    .get(workoutController.create);
+    .post(workoutController.create);
 
 module.exports = router;
