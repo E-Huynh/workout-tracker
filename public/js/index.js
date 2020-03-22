@@ -1,10 +1,12 @@
 
 $(document).ready(function () {
     // create new workout
-    $('#newWorkout').on('click', function() {
+    $('#workoutForm').on('submit', function(event) {
+        event.preventDefault();
         const workoutName = {name: $('#workoutInput').val()};
         $.post('/api/create', workoutName, function(APIdata){
             console.log('data: ', APIdata)
+            $('#workoutInput').val('')
         })
         .catch(err => {
             //validation error
