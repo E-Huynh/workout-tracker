@@ -5,10 +5,12 @@ module.exports = {
         // create logic
         // console.log('req: ', req.body);
         db.workout
-            .create({name: 'purple'})
+            .create({name: 'yellow'})
+            // if create was successful
             .then(dbWorkout => {
                 res.status(200).json(dbWorkout);
             })
+            // if create was unsuccessful
             .catch(err => res.status(422).json(err));
     },
     find: function (req, res) {
