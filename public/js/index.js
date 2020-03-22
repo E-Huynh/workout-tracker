@@ -5,18 +5,12 @@ $(document).ready(function () {
         event.preventDefault();
         const workoutName = {name: $('#workoutInput').val().toLowerCase()};
         $.post('/api/create', workoutName, function(APIdata){
-            console.log('data: ', APIdata)
+            //console.log('data: ', APIdata)
             $('#workoutInput').val('')
         })
         .catch(err => {
             //validation error
-            if(err.responseJSON.message){
-                console.log('err: ', err.responseJSON.message);
-            }
-            //name duplicate error
-            else if(err.responseJSON.errmsg){
-                console.log('err: ', err.responseJSON.errmsg);
-            }
+            err.responseJSON && err.responseJSON.message ? console.log(err.responseJSON.message) : console.log(err.responseJSON.errmsg)
         });
     })
     $('#previous').on('click', function() {
