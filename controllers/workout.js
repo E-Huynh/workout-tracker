@@ -2,14 +2,11 @@ const db = require('../models');
 // Creation of a test workout schema
 module.exports = {
     create: function (req, res) {
-        const name = req.body
         db.workout
-            .create(name)
-            // if create was successful
+            .create(req.body);
             .then(dbWorkout => {
                 res.status(200).json(dbWorkout);
-            })
-            // if create was unsuccessful
+            });
             .catch(err => res.status(422).json(err));
     },
     find: function (req, res) {
