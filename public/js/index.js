@@ -66,7 +66,7 @@ $(document).ready(function () {
                     <div class="control">
                         <div class="select is-fullwidth">
                             <select>
-                                <option>Business development</option>
+                                <option>Non-functional</option>
                                 <option>Marketing</option>
                                 <option>Sales</option>
                             </select>
