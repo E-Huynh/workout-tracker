@@ -2,7 +2,9 @@
 $(document).ready(function () {
     init();
 
-    // click events
+    // CLICK EVENTS
+
+    // display add excercise form
     $('#addBtn').on('click', function () {
         $('#displayHeader').html('Add Excercise');
         $('#displayArea').html(`
@@ -90,6 +92,7 @@ $(document).ready(function () {
         </form>
         `)
     });
+    // add excercise
     $('.card-content').on('click', '#addExcerciseBtn', function(event) {
         event.preventDefault();
         console.log('addExcerciseBtn was clicked');
@@ -101,17 +104,61 @@ $(document).ready(function () {
         }
         $.post('/api/excercise', formData, function (data) {
             console.log('data: ', data);
-            $('#excerciseInput').val(''),
-            $('#setsInput').val(''),
-            $('#repsInput').val(''),
-            $('#weightInput').val('')
+            $('#excerciseInput').val('');
+            $('#setsInput').val('');
+            $('#repsInput').val('');
+            $('#weightInput').val('');
         }).catch(err => {
             console.log('err: ', err);
         })
     })
-    $('#createNewBtn').on('click', function () {
-        console.log('createNewBtn was clicked');
+    // display create workout form
+    $('#createBtn').on('click', function () {
+        $('#displayHeader').html('Create New Workout');
+        $('#displayArea').html(`
+        <form id='addExcerciseForm'>
+        <div class="field is-horizontal">
+            <div class="field-label is-normal">
+                <label class="label">Name</label>
+            </div>
+            <div class="field-body">
+                <div class="field">
+                    <p class="control is-expanded">
+                        <input class="input" id='workoutInput' type="text" placeholder="Workout Name">
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="field is-horizontal">
+            <div class="field-label">
+                <!-- Left empty for spacing -->
+            </div>
+            <div class="field-body">
+                <div class="field">
+                    <div class="control">
+                        <button class="button is-primary" id='addWorkoutBtn'>
+                            Create New Workout
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </form>
+        `)
     });
+    // create workout
+    $('.card-content').on('click', '#addWorkoutBtn', function(event) {
+        event.preventDefault();
+        const workoutName = {name: $('#workoutInput').val().toLowerCase()};
+        $.post('/api/workout', workoutName, function(APIdata){
+            console.log('data: ', APIdata)
+            $('#workoutInput').val('')
+            //DO SOMETHING WITH THE DATA
+        })
+        .catch(err => {
+            err.responseJSON && err.responseJSON.message ? console.log(err.responseJSON.message) : console.log(err.responseJSON.errmsg)
+        });
+    })
 
 
     // functions
