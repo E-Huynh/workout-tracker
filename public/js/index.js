@@ -101,6 +101,10 @@ $(document).ready(function () {
         }
         $.post('/api/excercise', formData, function (data) {
             console.log('data: ', data);
+            $('#excerciseInput').val(''),
+            $('#setsInput').val(''),
+            $('#repsInput').val(''),
+            $('#weightInput').val('')
         }).catch(err => {
             console.log('err: ', err);
         })
