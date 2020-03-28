@@ -25,7 +25,9 @@ module.exports = {
     findLastByDate: function (req, res) {
         db.workout
             .find({}).limit(1).sort({date: -1})
+            // .populate('excercises')
             .then(dbWorkout => {
+                // console.log('dbWorkout: ', dbWorkout)
                 res.status(200).json(dbWorkout);
             })
             .catch(err => res.status(422).json(err));
