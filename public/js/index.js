@@ -8,10 +8,8 @@ $(document).ready(function () {
     $('#addBtn').on('click', function () {
         let workoutList = '';
         $.get('/api/workout/list', function(data) {
-            console.log('/api/workout/list .get: ', data);
             workoutList = generateSelectOptions(data);
         }).then(function() {
-            console.log('workoutList: ', workoutList)
             $('#displayHeader').html('Add Excercise');
             $('#displayArea').html(`
             <form id='addExcerciseForm'>
@@ -181,12 +179,11 @@ $(document).ready(function () {
         })
     }
     function generateSelectOptions(array) {
-        let selectHTML = '';
+        let selectHTML;
         array.forEach(element => {
             selectHTML += `<option data-value='${element}'>${element}</option>`;
             selectHTML.innerHTML = selectHTML;    
         })
-        console.log('selectHTML: ', selectHTML);
         return selectHTML;
     }
     function disableButton(button) {
