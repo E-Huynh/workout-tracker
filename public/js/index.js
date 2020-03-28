@@ -5,7 +5,7 @@ $(document).ready(function () {
     // CLICK EVENTS
 
     // display add excercise form
-    $('#addBtn').on('click', function () {
+    $('#addBtn').on('click', function() {
         let workoutList = '';
         $.get('/api/workout/list', function(data) {
             workoutList = generateSelectOptions(data);
@@ -95,7 +95,7 @@ $(document).ready(function () {
             `)    
         })
     });
-    // add excercise
+    // submit add excercise form
     $('.card-content').on('click', '#addExcerciseBtn', function(event) {
         event.preventDefault();
         const formData = {
@@ -113,6 +113,29 @@ $(document).ready(function () {
             $('#weightInput').val('');
         }).catch(err => {
             console.log('err: ', err);
+        })
+    })
+    // display select workout
+    $('#selectBtn').on('click', function() {
+        let workoutList = '';
+        $.get('/api/workout/list', function(data) {
+            workoutList = generateSelectOptions(data);
+        }).then(function() {
+            $('#displayHeader').html('Select Workout');
+            $('#displayArea').html(`
+            <div class="field has-addons">
+                <div class="control is-expanded">
+                    <div class="select is-fullwidth">
+                    <select>
+                        ${workoutList}
+                    </select>
+                    </div>
+                </div>
+                <div class="control">
+                    <button type="submit" class="button is-primary">Choose</button>
+                </div>
+            </div>
+            `);    
         })
     })
     // display create workout form
@@ -149,7 +172,7 @@ $(document).ready(function () {
         </form>
         `)
     });
-    // create workout
+    // submit create workout form
     $('.card-content').on('click', '#addWorkoutBtn', function(event) {
         event.preventDefault();
         const workoutName = {name: $('#workoutInput').val().toLowerCase()};
@@ -185,8 +208,5 @@ $(document).ready(function () {
             selectHTML.innerHTML = selectHTML;    
         })
         return selectHTML;
-    }
-    function disableButton(button) {
-        
     }
 })
