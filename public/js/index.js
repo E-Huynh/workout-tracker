@@ -98,6 +98,7 @@ $(document).ready(function () {
         })
         return selectHTML;
     }
+    // generate HTML functions
     function generateAddExcerciseHtml(workoutList, selectWorkout, createdName) {
         $('#displayHeader').html('Add Excercise');
         $('#displayArea').html(`
