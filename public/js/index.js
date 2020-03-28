@@ -232,7 +232,6 @@ $(document).ready(function () {
             `)
     }
     function displayWorkoutHtml(data) {
-        console.log('data: ', data)
         for (let i = 0; i < data[0].excercises; i++) {
             console.log('in for loop')
             $('#tileDisplay').html(`
