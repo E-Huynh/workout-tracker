@@ -95,7 +95,6 @@ $(document).ready(function () {
     // add excercise
     $('.card-content').on('click', '#addExcerciseBtn', function(event) {
         event.preventDefault();
-        console.log('addExcerciseBtn was clicked');
         const formData = {
             excercise: $('#excerciseInput').val().toLowerCase(),
             sets: $('#setsInput').val(),
@@ -165,8 +164,13 @@ $(document).ready(function () {
     // functions
     function init() {
         $.get('/api/workout', function (data) {
-            $('#displayHeader').html(`${data[0].name}`);
-            $('#displayArea').html(`${data[0].excercises} excercises`);
+            if(data.length < 1) {
+                $('#displayHeader').html('Workout Tracker');
+                $('#displayArea').html('Workout Tracker Content');
+            }else{
+                $('#displayHeader').html(`${data[0].name}`);
+                $('#displayArea').html(`${data[0].excercises} excercises`);    
+            }
         }).catch(err => {
             console.log('err: ', err);
         })
