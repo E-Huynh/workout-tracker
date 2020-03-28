@@ -62,39 +62,7 @@ $(document).ready(function () {
         $(location).attr('href', '../workout.html')
     })
     // display create workout form
-    $('#createBtn').on('click', function () {
-        $('#displayHeader').html('Create New Workout');
-        $('#displayArea').html(`
-        <form id='addExcerciseForm'>
-        <div class="field is-horizontal">
-            <div class="field-label is-normal">
-                <label class="label">Name</label>
-            </div>
-            <div class="field-body">
-                <div class="field">
-                    <p class="control is-expanded">
-                        <input class="input" id='workoutInput' type="text" placeholder="Workout Name">
-                    </p>
-                </div>
-            </div>
-        </div>
-        <div class="field is-horizontal">
-            <div class="field-label">
-                <!-- Left empty for spacing -->
-            </div>
-            <div class="field-body">
-                <div class="field">
-                    <div class="control">
-                        <button class="button is-primary" id='addWorkoutBtn'>
-                            Create New Workout
-                        </button>
-                    </div>
-                </div>
-            </div>
-        </div>
-        </form>
-        `)
-    });
+    $('#createBtn').on('click', generateAddWorkoutHtml);
     // submit create workout form
     $('.card-content').on('click', '#addWorkoutBtn', function (event) {
         event.preventDefault();
@@ -220,5 +188,38 @@ $(document).ready(function () {
             $('#useWorkoutList').remove();
             $('#addExcerciseBtn').attr('data-name', createdName.name);
         }
+    }
+    function generateAddWorkoutHtml() {
+        $('#displayHeader').html('Create New Workout');
+        $('#displayArea').html(`
+        <form id='addExcerciseForm'>
+        <div class="field is-horizontal">
+            <div class="field-label is-normal">
+                <label class="label">Name</label>
+            </div>
+            <div class="field-body">
+                <div class="field">
+                    <p class="control is-expanded">
+                        <input class="input" id='workoutInput' type="text" placeholder="Workout Name">
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="field is-horizontal">
+            <div class="field-label">
+                <!-- Left empty for spacing -->
+            </div>
+            <div class="field-body">
+                <div class="field">
+                    <div class="control">
+                        <button class="button is-primary" id='addWorkoutBtn'>
+                            Create New Workout
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </form>
+        `)
     }
 })
