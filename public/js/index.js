@@ -21,7 +21,8 @@ $(document).ready(function () {
             sets: $('#setsInput').val(),
             reps: $('#repsInput').val(),
             weight: $('#weightInput').val(),
-            workout: $('#workoutLinkInput').val()
+            // workout value depends on if the workoutLinkInput exists
+            workout: ($('#workoutLinkInput').val() != null ? $('#workoutLinkInput').val() : $('#addExcerciseBtn').data('name'))
         }
         $.post('/api/excercise', formData, function (data) {
             console.log('data: ', data);
