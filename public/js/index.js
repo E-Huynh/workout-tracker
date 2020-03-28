@@ -126,17 +126,22 @@ $(document).ready(function () {
             <div class="field has-addons">
                 <div class="control is-expanded">
                     <div class="select is-fullwidth">
-                    <select>
+                    <select id='selectWorkoutInput'>
                         ${workoutList}
                     </select>
                     </div>
                 </div>
                 <div class="control">
-                    <button type="submit" class="button is-primary">Choose</button>
+                    <button type="submit" class="button is-primary" id='selectWorkoutBtn'>Choose</button>
                 </div>
             </div>
             `);
         })
+    })
+    // redirect to select workout page
+    $('.card-content').on('click', '#selectWorkoutBtn', function () {
+        let workout = $('#selectWorkoutInput').val();
+        console.log('workout: ', workout);
     })
     // display create workout form
     $('#createBtn').on('click', function () {
@@ -201,7 +206,7 @@ $(document).ready(function () {
         })
     }
     function generateSelectOptions(array) {
-        let selectHTML;
+        let selectHTML = '';
         array.forEach(element => {
             selectHTML += `<option data-value='${element}'>${element}</option>`;
             selectHTML.innerHTML = selectHTML;
