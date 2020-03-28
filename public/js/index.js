@@ -142,6 +142,8 @@ $(document).ready(function () {
     $('.card-content').on('click', '#selectWorkoutBtn', function () {
         let workout = $('#selectWorkoutInput').val();
         console.log('workout: ', workout);
+        // needs to send workout with redirect
+        $(location).attr('href', '../workout.html')
     })
     // display create workout form
     $('#createBtn').on('click', function () {
