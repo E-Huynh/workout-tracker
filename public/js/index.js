@@ -5,11 +5,11 @@ $(document).ready(function () {
     // CLICK EVENTS
 
     // display add excercise form
-    $('#addBtn').on('click', function() {
+    $('#addBtn').on('click', function () {
         let workoutList = '';
-        $.get('/api/workout/list', function(data) {
+        $.get('/api/workout/list', function (data) {
             workoutList = generateSelectOptions(data);
-        }).then(function() {
+        }).then(function () {
             $('#displayHeader').html('Add Excercise');
             $('#displayArea').html(`
             <form id='addExcerciseForm'>
@@ -92,11 +92,11 @@ $(document).ready(function () {
                 </div>
             </div>
             </form>
-            `)    
+            `)
         })
     });
     // submit add excercise form
-    $('.card-content').on('click', '#addExcerciseBtn', function(event) {
+    $('.card-content').on('click', '#addExcerciseBtn', function (event) {
         event.preventDefault();
         const formData = {
             excercise: $('#excerciseInput').val().toLowerCase(),
@@ -116,11 +116,11 @@ $(document).ready(function () {
         })
     })
     // display select workout
-    $('#selectBtn').on('click', function() {
+    $('#selectBtn').on('click', function () {
         let workoutList = '';
-        $.get('/api/workout/list', function(data) {
+        $.get('/api/workout/list', function (data) {
             workoutList = generateSelectOptions(data);
-        }).then(function() {
+        }).then(function () {
             $('#displayHeader').html('Select Workout');
             $('#displayArea').html(`
             <div class="field has-addons">
@@ -135,7 +135,7 @@ $(document).ready(function () {
                     <button type="submit" class="button is-primary">Choose</button>
                 </div>
             </div>
-            `);    
+            `);
         })
     })
     // display create workout form
@@ -173,29 +173,28 @@ $(document).ready(function () {
         `)
     });
     // submit create workout form
-    $('.card-content').on('click', '#addWorkoutBtn', function(event) {
+    $('.card-content').on('click', '#addWorkoutBtn', function (event) {
         event.preventDefault();
-        const workoutName = {name: $('#workoutInput').val().toLowerCase()};
-        $.post('/api/workout', workoutName, function(APIdata){
+        const workoutName = { name: $('#workoutInput').val().toLowerCase() };
+        $.post('/api/workout', workoutName, function (APIdata) {
             console.log('data: ', APIdata)
             $('#workoutInput').val('')
             //DO SOMETHING WITH THE DATA
         })
-        .catch(err => {
-            err.responseJSON && err.responseJSON.message ? console.log(err.responseJSON.message) : console.log(err.responseJSON.errmsg)
-        });
+            .catch(err => {
+                err.responseJSON && err.responseJSON.message ? console.log(err.responseJSON.message) : console.log(err.responseJSON.errmsg)
+            });
     })
-
 
     // functions
     function init() {
         $.get('/api/workout', function (data) {
-            if(data.length < 1) {
+            if (data.length < 1) {
                 $('#displayHeader').html('Workout Tracker');
                 $('#displayArea').html('Workout Tracker Content');
-            }else{
+            } else {
                 $('#displayHeader').html(`${data[0].name}`);
-                $('#displayArea').html(`${data[0].excercises} excercises`);    
+                $('#displayArea').html(`${data[0].excercises} excercises`);
             }
         }).catch(err => {
             console.log('err: ', err);
@@ -205,7 +204,7 @@ $(document).ready(function () {
         let selectHTML;
         array.forEach(element => {
             selectHTML += `<option data-value='${element}'>${element}</option>`;
-            selectHTML.innerHTML = selectHTML;    
+            selectHTML.innerHTML = selectHTML;
         })
         return selectHTML;
     }
