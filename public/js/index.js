@@ -6,96 +6,96 @@ $(document).ready(function () {
 
     // display add excercise form
     $('#addBtn').on('click', function () {
+        let workoutList = '';
         $.get('/api/workout/list', function(data) {
             console.log('/api/workout/list .get: ', data);
-            generateSelectOptions(data);
-        })
-
-        $('#displayHeader').html('Add Excercise');
-        $('#displayArea').html(`
-        <form id='addExcerciseForm'>
-        <div class="field is-horizontal">
-            <div class="field-label is-normal">
-                <label class="label">Excercise</label>
-            </div>
-            <div class="field-body">
-                <div class="field">
-                    <p class="control is-expanded">
-                        <input class="input" id='excerciseInput' type="text" placeholder="Bench Press">
-                    </p>
+            workoutList = generateSelectOptions(data);
+        }).then(function() {
+            console.log('workoutList: ', workoutList)
+            $('#displayHeader').html('Add Excercise');
+            $('#displayArea').html(`
+            <form id='addExcerciseForm'>
+            <div class="field is-horizontal">
+                <div class="field-label is-normal">
+                    <label class="label">Excercise</label>
+                </div>
+                <div class="field-body">
+                    <div class="field">
+                        <p class="control is-expanded">
+                            <input class="input" id='excerciseInput' type="text" placeholder="Bench Press">
+                        </p>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="field is-horizontal">
-            <div class="field-label is-normal">
-                <label class="label">Sets</label>
-            </div>
-            <div class="field-body">
-                <div class="field">
-                    <p class="control is-expanded">
-                        <input class="input" id='setsInput' type="text" placeholder="5">
-                    </p>
+            <div class="field is-horizontal">
+                <div class="field-label is-normal">
+                    <label class="label">Sets</label>
+                </div>
+                <div class="field-body">
+                    <div class="field">
+                        <p class="control is-expanded">
+                            <input class="input" id='setsInput' type="text" placeholder="5">
+                        </p>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="field is-horizontal">
-            <div class="field-label is-normal">
-                <label class="label">Reps</label>
-            </div>
-            <div class="field-body">
-                <div class="field">
-                    <p class="control is-expanded">
-                        <input class="input" id='repsInput' type="text" placeholder="5">
-                    </p>
+            <div class="field is-horizontal">
+                <div class="field-label is-normal">
+                    <label class="label">Reps</label>
+                </div>
+                <div class="field-body">
+                    <div class="field">
+                        <p class="control is-expanded">
+                            <input class="input" id='repsInput' type="text" placeholder="5">
+                        </p>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="field is-horizontal">
-            <div class="field-label is-normal">
-                <label class="label">Weight (lbs)</label>
-            </div>
-            <div class="field-body">
-                <div class="field">
-                    <p class="control is-expanded">
-                        <input class="input" id='weightInput' type="text" placeholder="100">
-                    </p>
+            <div class="field is-horizontal">
+                <div class="field-label is-normal">
+                    <label class="label">Weight (lbs)</label>
+                </div>
+                <div class="field-body">
+                    <div class="field">
+                        <p class="control is-expanded">
+                            <input class="input" id='weightInput' type="text" placeholder="100">
+                        </p>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="field is-horizontal">
-            <div class="field-label is-normal">
-                <label class="label">Workout</label>
-            </div>
-            <div class="field-body">
-                <div class="field is-narrow">
-                    <div class="control">
-                        <div class="select is-fullwidth">
-                            <select id='workoutLinkInput'>
-                                <option>Non-functional</option>
-                                <option>Marketing</option>
-                                <option>Sales</option>
-                            </select>
+            <div class="field is-horizontal">
+                <div class="field-label is-normal">
+                    <label class="label">Workout</label>
+                </div>
+                <div class="field-body">
+                    <div class="field is-narrow">
+                        <div class="control">
+                            <div class="select is-fullwidth">
+                                <select id='workoutLinkInput'>
+                                    ${workoutList}
+                                </select>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="field is-horizontal">
-            <div class="field-label">
-                <!-- Left empty for spacing -->
-            </div>
-            <div class="field-body">
-                <div class="field">
-                    <div class="control">
-                        <button class="button is-primary" id='addExcerciseBtn'>
-                            Add to workout
-                        </button>
+            <div class="field is-horizontal">
+                <div class="field-label">
+                    <!-- Left empty for spacing -->
+                </div>
+                <div class="field-body">
+                    <div class="field">
+                        <div class="control">
+                            <button class="button is-primary" id='addExcerciseBtn'>
+                                Add to workout
+                            </button>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-        </form>
-        `)
+            </form>
+            `)    
+        })
     });
     // add excercise
     $('.card-content').on('click', '#addExcerciseBtn', function(event) {
@@ -181,13 +181,13 @@ $(document).ready(function () {
         })
     }
     function generateSelectOptions(array) {
-        const newSelect = document.createElement('select');
         let selectHTML = '';
         array.forEach(element => {
             selectHTML += `<option data-value='${element}'>${element}</option>`;
-            newSelect.innerHTML = selectHTML;    
+            selectHTML.innerHTML = selectHTML;    
         })
-        console.log('newSelect: ', newSelect);
+        console.log('selectHTML: ', selectHTML);
+        return selectHTML;
     }
     function disableButton(button) {
         
