@@ -75,6 +75,7 @@ $(document).ready(function () {
             } else {
                 $('#displayHeader').html(`${data[0].name}`);
                 $('#displayArea').html(`${data[0].excercises} excercises`);
+                displayWorkoutHtml(data)
             }
         }).catch(err => {
             console.log('err: ', err);
@@ -229,5 +230,23 @@ $(document).ready(function () {
                 </div>
             </div>
             `)
+    }
+    function displayWorkoutHtml(data) {
+        console.log('data: ', data)
+        for (let i = 0; i < data[0].excercises; i++) {
+            console.log('in for loop')
+            $('#tileDisplay').html(`
+            <div class="tile is-parent is-4">
+              <article class="tile is-child box">
+                <p class="title">Excercise Name</p>
+                <div class="content">
+                  <p>Sets: </p>
+                  <p>Reps: </p>
+                  <p>Weights: </p>
+                </div>
+              </article>
+            </div>
+            `)
+        }
     }
 })
