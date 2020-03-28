@@ -12,6 +12,7 @@ $(document).ready(function () {
             generateAddExcerciseHtml(workoutList, false)
         })
     });
+
     // submit add excercise form
     $('.card-content').on('click', '#addExcerciseBtn', function (event) {
         event.preventDefault();
@@ -32,38 +33,26 @@ $(document).ready(function () {
             console.log('err: ', err);
         })
     })
+
     // display select workout
     $('#selectBtn').on('click', function () {
         let workoutList = '';
         $.get('/api/workout/list', function (data) {
             workoutList = generateSelectOptions(data);
-        }).then(function () {
-            $('#displayHeader').html('Select Workout');
-            $('#displayArea').html(`
-            <div class="field has-addons">
-                <div class="control is-expanded">
-                    <div class="select is-fullwidth">
-                    <select id='selectWorkoutInput'>
-                        ${workoutList}
-                    </select>
-                    </div>
-                </div>
-                <div class="control">
-                    <button type="submit" class="button is-primary" id='selectWorkoutBtn'>Choose</button>
-                </div>
-            </div>
-            `);
+            generateSelectWorkoutHtml(workoutList)
         })
     })
+
     // redirect to select workout page
     $('.card-content').on('click', '#selectWorkoutBtn', function () {
-        generateSelectWorkoutHtml();
         let workout = $('#selectWorkoutInput').val();
-        // needs to send workout with redirect
-        $(location).attr('href', '../workout.html')
+        console.log('Select workout: ', workout)
+        // somehow display work selected
     })
+
     // display create workout form
     $('#createBtn').on('click', generateAddWorkoutHtml);
+
     // submit create workout form
     $('.card-content').on('click', '#addWorkoutBtn', function (event) {
         event.preventDefault();
@@ -77,7 +66,7 @@ $(document).ready(function () {
         });
     })
 
-    // functions
+    // FUNCTIONS
     function init() {
         $.get('/api/workout', function (data) {
             if (data.length < 1) {
@@ -224,7 +213,7 @@ $(document).ready(function () {
         </form>
         `)
     }
-    function generateSelectWorkoutHtml() {
+    function generateSelectWorkoutHtml(workoutList) {
         $('#displayHeader').html('Select Workout');
             $('#displayArea').html(`
             <div class="field has-addons">
