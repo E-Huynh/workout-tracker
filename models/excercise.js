@@ -26,6 +26,10 @@ const excerciseSchema = new Schema({
   date: {
     type: Date,
     default: Date.now
+  },
+  workout: {
+    type: String,
+    required: "Must select a workout"
   }
 });
 

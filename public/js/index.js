@@ -65,7 +65,7 @@ $(document).ready(function () {
                 <div class="field is-narrow">
                     <div class="control">
                         <div class="select is-fullwidth">
-                            <select>
+                            <select id='workoutLinkInput'>
                                 <option>Non-functional</option>
                                 <option>Marketing</option>
                                 <option>Sales</option>
@@ -100,7 +100,8 @@ $(document).ready(function () {
             excercise: $('#excerciseInput').val().toLowerCase(),
             sets: $('#setsInput').val(),
             reps: $('#repsInput').val(),
-            weight: $('#weightInput').val()
+            weight: $('#weightInput').val(),
+            workout: $('#workoutLinkInput').val()
         }
         $.post('/api/excercise', formData, function (data) {
             console.log('data: ', data);
