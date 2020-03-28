@@ -18,7 +18,6 @@ module.exports = {
                 dbWorkout.forEach(function (data) {
                     workoutList.push(data.name);
                 })
-                // console.log('workoutList: ', workoutList)
                 res.status(200).json(workoutList);
             })
             .catch(err => res.status(422).json(err));
