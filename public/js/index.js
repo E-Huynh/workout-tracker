@@ -170,4 +170,7 @@ $(document).ready(function () {
             console.log('err: ', err);
         })
     }
+    function disableButton(button) {
+        
+    }
 })
