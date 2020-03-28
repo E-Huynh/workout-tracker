@@ -57,6 +57,7 @@ $(document).ready(function () {
     })
     // redirect to select workout page
     $('.card-content').on('click', '#selectWorkoutBtn', function () {
+        generateSelectWorkoutHtml();
         let workout = $('#selectWorkoutInput').val();
         // needs to send workout with redirect
         $(location).attr('href', '../workout.html')
@@ -222,5 +223,22 @@ $(document).ready(function () {
         </div>
         </form>
         `)
+    }
+    function generateSelectWorkoutHtml() {
+        $('#displayHeader').html('Select Workout');
+            $('#displayArea').html(`
+            <div class="field has-addons">
+                <div class="control is-expanded">
+                    <div class="select is-fullwidth">
+                    <select id='selectWorkoutInput'>
+                        ${workoutList}
+                    </select>
+                    </div>
+                </div>
+                <div class="control">
+                    <button type="submit" class="button is-primary" id='selectWorkoutBtn'>Choose</button>
+                </div>
+            </div>
+            `)
     }
 })
