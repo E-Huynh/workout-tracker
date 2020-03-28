@@ -8,7 +8,6 @@ $(document).ready(function () {
     $('#addBtn').on('click', function () {
         let workoutList = '';
         $.get('/api/workout/list', function (data) {
-            console.log(data)
             workoutList = generateSelectOptions(data);
             generateAddExcerciseHtml(workoutList, false)
         })
@@ -25,7 +24,6 @@ $(document).ready(function () {
             workout: ($('#workoutLinkInput').val() != null ? $('#workoutLinkInput').val() : $('#addExcerciseBtn').data('name'))
         }
         $.post('/api/excercise', formData, function (data) {
-            console.log('data: ', data);
             $('#excerciseInput').val('');
             $('#setsInput').val('');
             $('#repsInput').val('');
@@ -60,7 +58,6 @@ $(document).ready(function () {
     // redirect to select workout page
     $('.card-content').on('click', '#selectWorkoutBtn', function () {
         let workout = $('#selectWorkoutInput').val();
-        console.log('workout: ', workout);
         // needs to send workout with redirect
         $(location).attr('href', '../workout.html')
     })
@@ -102,9 +99,7 @@ $(document).ready(function () {
     $('.card-content').on('click', '#addWorkoutBtn', function (event) {
         event.preventDefault();
         const workoutName = { name: $('#workoutInput').val().toLowerCase() };
-        console.log(workoutName);
         $.post('/api/workout', workoutName, function (APIdata) {
-            console.log('data: ', APIdata)
             $('#workoutInput').val('')
             generateAddExcerciseHtml(workoutName, true, workoutName)
         })
@@ -136,7 +131,6 @@ $(document).ready(function () {
         return selectHTML;
     }
     function generateAddExcerciseHtml(workoutList, selectWorkout, createdName) {
-        console.log('workoutlist: ',workoutList)
         $('#displayHeader').html('Add Excercise');
         $('#displayArea').html(`
         <form id='addExcerciseForm'>
