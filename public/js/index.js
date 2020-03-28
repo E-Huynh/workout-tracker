@@ -8,8 +8,10 @@ $(document).ready(function () {
     $('#addBtn').on('click', function () {
         let workoutList = '';
         $.get('/api/workout/list', function (data) {
+            console.log(data)
             workoutList = generateSelectOptions(data);
-        }).then(generateAddExcerciseHtml(workoutList, false))
+            generateAddExcerciseHtml(workoutList, false)
+        })
     });
     // submit add excercise form
     $('.card-content').on('click', '#addExcerciseBtn', function (event) {
@@ -99,14 +101,15 @@ $(document).ready(function () {
     $('.card-content').on('click', '#addWorkoutBtn', function (event) {
         event.preventDefault();
         const workoutName = { name: $('#workoutInput').val().toLowerCase() };
+        console.log(workoutName);
         $.post('/api/workout', workoutName, function (APIdata) {
             console.log('data: ', APIdata)
             $('#workoutInput').val('')
-            //DO SOMETHING WITH THE DATA
+            generateAddExcerciseHtml(workoutName, true, workoutName)
         })
-            .catch(err => {
-                err.responseJSON && err.responseJSON.message ? console.log(err.responseJSON.message) : console.log(err.responseJSON.errmsg)
-            });
+        .catch(err => {
+            err.responseJSON && err.responseJSON.message ? console.log(err.responseJSON.message) : console.log(err.responseJSON.errmsg)
+        });
     })
 
     // functions
@@ -131,7 +134,8 @@ $(document).ready(function () {
         })
         return selectHTML;
     }
-    function generateAddExcerciseHtml(workoutList, selectWorkout) {
+    function generateAddExcerciseHtml(workoutList, selectWorkout, createdName) {
+        console.log('workoutlist: ',workoutList)
         $('#displayHeader').html('Add Excercise');
         $('#displayArea').html(`
         <form id='addExcerciseForm'>
@@ -215,8 +219,11 @@ $(document).ready(function () {
         </div>
         </form>
         `)
+        // Handles if the function is used for a newly created workout
         if (selectWorkout === true) {
+            $('#displayHeader').html(`Add Excercise to ${createdName.name}`);
             $('#useWorkoutList').remove();
+            $('#addExcerciseBtn').attr('data-name', createdName.name);
         }
     }
 })
