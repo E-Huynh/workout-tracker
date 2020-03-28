@@ -9,91 +9,7 @@ $(document).ready(function () {
         let workoutList = '';
         $.get('/api/workout/list', function (data) {
             workoutList = generateSelectOptions(data);
-        }).then(function () {
-            $('#displayHeader').html('Add Excercise');
-            $('#displayArea').html(`
-            <form id='addExcerciseForm'>
-            <div class="field is-horizontal">
-                <div class="field-label is-normal">
-                    <label class="label">Excercise</label>
-                </div>
-                <div class="field-body">
-                    <div class="field">
-                        <p class="control is-expanded">
-                            <input class="input" id='excerciseInput' type="text" placeholder="Bench Press">
-                        </p>
-                    </div>
-                </div>
-            </div>
-            <div class="field is-horizontal">
-                <div class="field-label is-normal">
-                    <label class="label">Sets</label>
-                </div>
-                <div class="field-body">
-                    <div class="field">
-                        <p class="control is-expanded">
-                            <input class="input" id='setsInput' type="text" placeholder="5">
-                        </p>
-                    </div>
-                </div>
-            </div>
-            <div class="field is-horizontal">
-                <div class="field-label is-normal">
-                    <label class="label">Reps</label>
-                </div>
-                <div class="field-body">
-                    <div class="field">
-                        <p class="control is-expanded">
-                            <input class="input" id='repsInput' type="text" placeholder="5">
-                        </p>
-                    </div>
-                </div>
-            </div>
-            <div class="field is-horizontal">
-                <div class="field-label is-normal">
-                    <label class="label">Weight (lbs)</label>
-                </div>
-                <div class="field-body">
-                    <div class="field">
-                        <p class="control is-expanded">
-                            <input class="input" id='weightInput' type="text" placeholder="100">
-                        </p>
-                    </div>
-                </div>
-            </div>
-            <div class="field is-horizontal">
-                <div class="field-label is-normal">
-                    <label class="label">Workout</label>
-                </div>
-                <div class="field-body">
-                    <div class="field is-narrow">
-                        <div class="control">
-                            <div class="select is-fullwidth">
-                                <select id='workoutLinkInput'>
-                                    ${workoutList}
-                                </select>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="field is-horizontal">
-                <div class="field-label">
-                    <!-- Left empty for spacing -->
-                </div>
-                <div class="field-body">
-                    <div class="field">
-                        <div class="control">
-                            <button class="button is-primary" id='addExcerciseBtn'>
-                                Add to workout
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            </form>
-            `)
-        })
+        }).then(generateAddExcerciseHtml(workoutList, false))
     });
     // submit add excercise form
     $('.card-content').on('click', '#addExcerciseBtn', function (event) {
@@ -214,5 +130,93 @@ $(document).ready(function () {
             selectHTML.innerHTML = selectHTML;
         })
         return selectHTML;
+    }
+    function generateAddExcerciseHtml(workoutList, selectWorkout) {
+        $('#displayHeader').html('Add Excercise');
+        $('#displayArea').html(`
+        <form id='addExcerciseForm'>
+        <div class="field is-horizontal">
+            <div class="field-label is-normal">
+                <label class="label">Excercise</label>
+            </div>
+            <div class="field-body">
+                <div class="field">
+                    <p class="control is-expanded">
+                        <input class="input" id='excerciseInput' type="text" placeholder="Bench Press">
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="field is-horizontal">
+            <div class="field-label is-normal">
+                <label class="label">Sets</label>
+            </div>
+            <div class="field-body">
+                <div class="field">
+                    <p class="control is-expanded">
+                        <input class="input" id='setsInput' type="text" placeholder="5">
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="field is-horizontal">
+            <div class="field-label is-normal">
+                <label class="label">Reps</label>
+            </div>
+            <div class="field-body">
+                <div class="field">
+                    <p class="control is-expanded">
+                        <input class="input" id='repsInput' type="text" placeholder="5">
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="field is-horizontal">
+            <div class="field-label is-normal">
+                <label class="label">Weight (lbs)</label>
+            </div>
+            <div class="field-body">
+                <div class="field">
+                    <p class="control is-expanded">
+                        <input class="input" id='weightInput' type="text" placeholder="100">
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="field is-horizontal" id='useWorkoutList'>
+            <div class="field-label is-normal">
+                <label class="label">Workout</label>
+            </div>
+            <div class="field-body">
+                <div class="field is-narrow">
+                    <div class="control">
+                        <div class="select is-fullwidth">
+                            <select id='workoutLinkInput'>
+                                ${workoutList}
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="field is-horizontal">
+            <div class="field-label">
+                <!-- Left empty for spacing -->
+            </div>
+            <div class="field-body">
+                <div class="field">
+                    <div class="control">
+                        <button class="button is-primary" id='addExcerciseBtn'>
+                            Add to workout
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </form>
+        `)
+        if (selectWorkout === true) {
+            $('#useWorkoutList').remove();
+        }
     }
 })
