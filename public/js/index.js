@@ -6,6 +6,10 @@ $(document).ready(function () {
 
     // display add excercise form
     $('#addBtn').on('click', function () {
+        $.get('/api/workout/list', function(data) {
+            console.log('/api/workout/list .get: ', data);
+        })
+
         $('#displayHeader').html('Add Excercise');
         $('#displayArea').html(`
         <form id='addExcerciseForm'>

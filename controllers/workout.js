@@ -9,9 +9,19 @@ module.exports = {
             })
             .catch(err => res.status(422).json(err));
     },
-    find: function (req, res) {
-        // find logic
-        console.log('workout find method called');
+    findAllWorkouts: function (req, res) {
+        db.workout
+            .find().sort({name: 1})
+            .then(dbWorkout => {
+                // creates alphabetical workout name list
+                const workoutList = [];
+                dbWorkout.forEach(function (data) {
+                    workoutList.push(data.name);
+                })
+                // console.log('workoutList: ', workoutList)
+                res.status(200).json(workoutList);
+            })
+            .catch(err => res.status(422).json(err));
     },
     findLastByDate: function (req, res) {
         db.workout

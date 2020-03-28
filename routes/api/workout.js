@@ -6,4 +6,7 @@ router.route('/')
     .post(workoutController.create)
     .get(workoutController.findLastByDate)
 
+router.route('/list')
+    .get(workoutController.findAllWorkouts)
+
 module.exports = router;
