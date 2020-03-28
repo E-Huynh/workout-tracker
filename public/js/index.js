@@ -8,6 +8,7 @@ $(document).ready(function () {
     $('#addBtn').on('click', function () {
         $.get('/api/workout/list', function(data) {
             console.log('/api/workout/list .get: ', data);
+            generateSelectOptions(data);
         })
 
         $('#displayHeader').html('Add Excercise');
@@ -178,6 +179,15 @@ $(document).ready(function () {
         }).catch(err => {
             console.log('err: ', err);
         })
+    }
+    function generateSelectOptions(array) {
+        const newSelect = document.createElement('select');
+        let selectHTML = '';
+        array.forEach(element => {
+            selectHTML += `<option data-value='${element}'>${element}</option>`;
+            newSelect.innerHTML = selectHTML;    
+        })
+        console.log('newSelect: ', newSelect);
     }
     function disableButton(button) {
         
