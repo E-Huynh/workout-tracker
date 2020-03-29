@@ -1,49 +1,77 @@
-# Unit 17 Nosql Homework: Workout Tracker
+# Team Profile Generator
 
-For this assignment, you'll create a workout tracker. This assignment will require you to create Mongo database with a Mongoose schema and handle routes with Express.
+[Github Repo](https://github.com/E-Huynh/Team_Profile_Generator)
 
-## User Story
+## Contact
 
-* As a user, I want to be able to view create and track daily workouts.
+Erik.W.Huynh@Gmail.com
 
-## Business Context
+[LinkedIn](https://www.linkedin.com/in/erik-huynh-228321196/)
 
-A consumer will reach their fitness goals quicker when they track their workout progress.
-
-## Acceptance Criteria
-
-When the user loads the page, they should be given the option to create a new workout, or continue with their last workout.
-
-The user should be able to:
-
-  * Add exercises to a previous workout plan.
-
-  * Add new exercises to a new workout plan.
-
-## Commit Early and Often
-
-One of the most important skills to master as a web developer is version control. Building the habit of committing via Git is important for two reasons:
-
-1. Your commit history is a signal to employers that you are actively working on projects and learning new skills
-
-2. Your commit history allows you to revert your code base in the event that you need to return to a previous state
-
-Follow these guidelines for committing:
-
-* Make single purpose commits for related changes to ensure a clean, manageable history. If you are fixing two issues, make two commits
-
-* Write descriptive, meaningful commit messages so that you and anyone else looking at your repository can easily understand its history
-
-* Don't commit half done work, for the sake of your collaborators (and your future self!)
-
-* Test your application before you commit to ensure functionality at every step in the development process
-
-We would like you to have well over 200 commits by graduation, so commit early and often!
-
-## Submission on BCS
-
-You are required to submit the following:
-
-* The URL to the deployed application
-
-* The URL to the Github repository
+[Portfolio](https://e-huynh.github.io/updated_portfolio/)
+## Purpose
+Generate a .HTML file of team members after user inputs employee info into node using a command line input.
+## Functionality
+  * Employee class is assign for every team member entered
+  
+  * A subclass of Manager, Engineer, or Intern can be applied to each Employee
+  
+  * Each subclass has the following specific inputs gathered:
+    
+        Manager: Office Number
+    
+        Engineer: Github Username
+    
+        Intern: School Name
+  
+  * Validates inputs to meet the proper following formats:
+  
+    *All inputs must not be empty*
+        
+    *Name may contain only alpha characters and spaces*
+    
+    *ID may contain only numeric characters **AND** must not match previous ID inputs*
+    
+    *Email format is as follows traditional email formats*
+    
+        Email examples:
+    
+        Matches: asmith@mactec.com | foo12@foo.edu | bob.smith@foo.tv
+    
+        Non-matches: joe | @foo.com | a@a
+    
+    *Office Number may contain only numeric characters*
+    
+    *Github Username may contain any type of characters*
+    
+    *School Name may contain only alpha characters and spaces*
+    
+   * A confirmation to add new team member will be prompt at the end of each set of inputs
+   
+   * Selecting "No" to adding another team member will end the input prompts and create a teamProfile.html file in the outputs folder
+   
+   * Names will automatically be capitalized
+        
+## Installation
+1. Save files to local machine
+2. Open Terminal on app.js
+3. Run NPM install
+## Instructions
+After installation, run node app.js in the Terminal. The CLI will prompt you for employee inputs. After inputs a prompt will ask if you want to add another employee. Select "Yes" to add additional inputs for employees. Once all employees have been added, selecting "No" will end the prompts and generate a teamProfile.html file in the outputs folder. Open this file to view the team.
+## Technologies
+  * [Bulma](https://bulma.io/)
+  * [Node.js](https://nodejs.org/en/)
+  * [Inquirer](https://www.npmjs.com/package/inquirer)
+  * [File System](https://nodejs.org/api/fs.html)
+  * Test Driven Development
+## Reported bugs
+  * validateNumbers function checks input value against existing ID inputs. This can lead to an error if the office number inputted is equal to an existing ID. Solution: create secondary function for officenumber validation.
+## Images
+### GIF showing functionality of the app
+![Functionality of app](https://github.com/E-Huynh/Team_Profile_Generator/blob/master/Images%20and%20GIFs/Team%20Profile%20Generator%20Functionality.gif?raw=true)
+### .HTML output from GIF
+![teamProfile page](https://github.com/E-Huynh/Team_Profile_Generator/blob/master/Images%20and%20GIFs/teamProfile%20image.png?raw=true)
+### Example of format with larger team
+![teamProfile page with 7 team members](https://github.com/E-Huynh/Team_Profile_Generator/blob/master/Images%20and%20GIFs/teamProfile%20-%207%20members.png?raw=true)
+### NPM Run Test Results
+![NPM run test results](https://github.com/E-Huynh/Team_Profile_Generator/blob/master/Images%20and%20GIFs/NPM%20Run%20Test.gif?raw=true)
