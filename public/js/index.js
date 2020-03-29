@@ -99,12 +99,12 @@ $(document).ready(function () {
     }
     // generate HTML functions
     function generateAddExcerciseHtml(workoutList, selectWorkout, createdName) {
-        $('#displayHeader').html('Add Excercise');
+        $('#displayHeader').html('Add Exercise');
         $('#displayArea').html(`
         <form id='addExcerciseForm'>
         <div class="field is-horizontal">
             <div class="field-label is-normal">
-                <label class="label">Excercise</label>
+                <label class="label">Exercise</label>
             </div>
             <div class="field-body">
                 <div class="field">
@@ -184,7 +184,7 @@ $(document).ready(function () {
         `)
         // Handles if the function is used for a newly created workout
         if (selectWorkout === true) {
-            $('#displayHeader').html(`Add Excercise to ${createdName.name}`);
+            $('#displayHeader').html(`Add Exercise to ${createdName.name}`);
             $('#useWorkoutList').remove();
             $('#addExcerciseBtn').attr('data-name', createdName.name);
         }
