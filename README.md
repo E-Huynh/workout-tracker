@@ -38,11 +38,11 @@ To view a workout, click the "Select Workout" button. Select from the dropdown l
 
 ## Technologies
   * [Bulma](https://bulma.io/)
-  * [Express]()
-  * [Mongoose]()
-  * [MongoDB]()
-  * [JQuery]()
-  * [Ajax]()
+  * [Express](https://expressjs.com/)
+  * [Mongoose](https://mongoosejs.com/)
+  * [MongoDB](https://www.mongodb.com/)
+  * [JQuery](https://jquery.com/)
+  * [Ajax]
 ## Known issues
   * Added an exercises to any existing workout, will display the last created workout instead of the workout that was added to
   
