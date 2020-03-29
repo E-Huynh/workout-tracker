@@ -52,9 +52,7 @@ $(document).ready(function () {
     // redirect to select workout page
     $('.card-content').on('click', '#selectWorkoutBtn', function () {
         let workout = $('#selectWorkoutInput').val();
-        // console.log('Select workout: ', workout)
         $.get('/api/workout/' + workout, function (data) {
-            console.log('route /api/workout/:name data:', data)
             displayWorkoutHtml(data)
         })
     })
@@ -69,7 +67,6 @@ $(document).ready(function () {
         $.post('/api/workout', workoutName, function (APIdata) {
             $('#workoutInput').val('')
             generateAddExcerciseHtml(workoutName, true, workoutName)
-            // console.log('APIdata: ', APIdata)
         })
         .catch(err => {
             err.responseJSON && err.responseJSON.message ? console.log(err.responseJSON.message) : console.log(err.responseJSON.errmsg)
@@ -84,7 +81,7 @@ $(document).ready(function () {
                 $('#displayArea').html('Workout Tracker Content');
             } else {
                 $('#displayHeader').html(`${data[0].name}`);
-                $('#displayArea').html(`${data[0].excercises[0].excercise}`);
+                $('#displayArea').html(`This is the last created workout`);
                 displayWorkoutHtml(data)
             }
         }).catch(err => {
@@ -242,9 +239,6 @@ $(document).ready(function () {
             `)
     }
     function displayWorkoutHtml(data) {
-        // console.log('data: ', data)
-        // console.log('displayWorkoutHtml array: ', data[0].excercises)
-        // console.log('displayWorkoutHtml excercise: ', data[0].excercises[0].excercise)
         const excerciseArray = data[0].excercises;
         let tileHtml = '';
         for (let i = 0; i < excerciseArray.length; i++) {
