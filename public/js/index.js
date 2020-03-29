@@ -29,7 +29,8 @@ $(document).ready(function () {
             $('#setsInput').val('');
             $('#repsInput').val('');
             $('#weightInput').val('');
-        }).then(function(data) {
+        })
+        .then(function(data) {
             $.get('/api/workout', function (data){
                 displayWorkoutHtml(data)
             })
@@ -52,7 +53,10 @@ $(document).ready(function () {
     $('.card-content').on('click', '#selectWorkoutBtn', function () {
         let workout = $('#selectWorkoutInput').val();
         // console.log('Select workout: ', workout)
-        // somehow display work selected
+        $.get('/api/workout/' + workout, function (data) {
+            console.log('route /api/workout/:name data:', data)
+            displayWorkoutHtml(data)
+        })
     })
 
     // display create workout form

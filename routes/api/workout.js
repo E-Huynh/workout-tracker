@@ -9,4 +9,7 @@ router.route('/')
 router.route('/list')
     .get(workoutController.findAllWorkouts)
 
+router.route('/:name')
+    .get(workoutController.findSpecificWorkout)
+
 module.exports = router;
