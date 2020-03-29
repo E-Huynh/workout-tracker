@@ -32,6 +32,7 @@ $(document).ready(function () {
         })
         .then(function(data) {
             $.get('/api/workout', function (data){
+                // This end point always displays the last created workout.
                 displayWorkoutHtml(data)
             })
         })
