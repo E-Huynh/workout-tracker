@@ -1,6 +1,7 @@
-# Team Profile Generator
+# Workout Tracker
 
-[Github Repo](https://github.com/E-Huynh/Team_Profile_Generator)
+[Deployed Link](https://peaceful-beach-93411.herokuapp.com/)
+[Github Repo](https://github.com/E-Huynh/workout-tracker)
 
 ## Contact
 
@@ -10,68 +11,39 @@ Erik.W.Huynh@Gmail.com
 
 [Portfolio](https://e-huynh.github.io/updated_portfolio/)
 ## Purpose
-Generate a .HTML file of team members after user inputs employee info into node using a command line input.
+Workout Tracker allows a user to create new workouts and and store exercises within them. Users can create as many workouts and exercises as needed.
 ## Functionality
-  * Employee class is assign for every team member entered
+  * The application will always display the last created workout upon loading
   
-  * A subclass of Manager, Engineer, or Intern can be applied to each Employee
+  * The currently selected workout will display the associated exercises below
   
-  * Each subclass has the following specific inputs gathered:
-    
-        Manager: Office Number
-    
-        Engineer: Github Username
-    
-        Intern: School Name
+  * Users can create a workout by clicking the "create workout" button. The application will then allow users to add exercise to the newly created workout
   
-  * Validates inputs to meet the proper following formats:
+  * Users can add new exercises to existing workouts using the "add exercise" button
   
-    *All inputs must not be empty*
+  * Users can view workouts using the "select workout" button.
         
-    *Name may contain only alpha characters and spaces*
-    
-    *ID may contain only numeric characters **AND** must not match previous ID inputs*
-    
-    *Email format is as follows traditional email formats*
-    
-        Email examples:
-    
-        Matches: asmith@mactec.com | foo12@foo.edu | bob.smith@foo.tv
-    
-        Non-matches: joe | @foo.com | a@a
-    
-    *Office Number may contain only numeric characters*
-    
-    *Github Username may contain any type of characters*
-    
-    *School Name may contain only alpha characters and spaces*
-    
-   * A confirmation to add new team member will be prompt at the end of each set of inputs
-   
-   * Selecting "No" to adding another team member will end the input prompts and create a teamProfile.html file in the outputs folder
-   
-   * Names will automatically be capitalized
-        
-## Installation
-1. Save files to local machine
-2. Open Terminal on app.js
-3. Run NPM install
 ## Instructions
-After installation, run node app.js in the Terminal. The CLI will prompt you for employee inputs. After inputs a prompt will ask if you want to add another employee. Select "Yes" to add additional inputs for employees. Once all employees have been added, selecting "No" will end the prompts and generate a teamProfile.html file in the outputs folder. Open this file to view the team.
+### Create Workout
+To create a workout, click the "Create New Workout" button. Enter a workout name and click "Create". Enter an exercise, sets, reps, and weight. Click the "Add to workout" button. The exercise will auto-populate below. Repeat until all exercises have been added.
+
+### Add Exercises
+To add an exercises to an existing workout, click the "Add Exercise" button. Enter the exercise, sets, reps, weight, and select from the dropdown list the workout you want to add to. Click "Add to workout".
+
+### Select Workout
+To view a workout, click the "Select Workout" button. Select from the dropdown list the workout you would like to view. Click "Choose". The workout will populate in the space below.
+
 ## Technologies
   * [Bulma](https://bulma.io/)
-  * [Node.js](https://nodejs.org/en/)
-  * [Inquirer](https://www.npmjs.com/package/inquirer)
-  * [File System](https://nodejs.org/api/fs.html)
-  * Test Driven Development
-## Reported bugs
-  * validateNumbers function checks input value against existing ID inputs. This can lead to an error if the office number inputted is equal to an existing ID. Solution: create secondary function for officenumber validation.
+  * [Express]()
+  * [Mongoose]()
+  * [MongoDB]()
+  * [JQuery]()
+  * [Ajax]()
+## Known issues
+  * Added an exercises to any existing workout, will display the last created workout instead of the workout that was added to.
+  
+## Future Features
+  * Be able to update and delete exercises and workouts
 ## Images
-### GIF showing functionality of the app
-![Functionality of app](https://github.com/E-Huynh/Team_Profile_Generator/blob/master/Images%20and%20GIFs/Team%20Profile%20Generator%20Functionality.gif?raw=true)
-### .HTML output from GIF
-![teamProfile page](https://github.com/E-Huynh/Team_Profile_Generator/blob/master/Images%20and%20GIFs/teamProfile%20image.png?raw=true)
-### Example of format with larger team
-![teamProfile page with 7 team members](https://github.com/E-Huynh/Team_Profile_Generator/blob/master/Images%20and%20GIFs/teamProfile%20-%207%20members.png?raw=true)
-### NPM Run Test Results
-![NPM run test results](https://github.com/E-Huynh/Team_Profile_Generator/blob/master/Images%20and%20GIFs/NPM%20Run%20Test.gif?raw=true)
+
