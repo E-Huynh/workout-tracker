@@ -1,6 +1,7 @@
 # Workout Tracker
 
 [Deployed Link](https://peaceful-beach-93411.herokuapp.com/)
+
 [Github Repo](https://github.com/E-Huynh/workout-tracker)
 
 ## Contact
@@ -18,6 +19,8 @@ Workout Tracker allows a user to create new workouts and and store exercises wit
   * The currently selected workout will display the associated exercises below
   
   * Users can create a workout by clicking the "create workout" button. The application will then allow users to add exercise to the newly created workout
+  
+  * Users cannot create workouts with the same name
   
   * Users can add new exercises to existing workouts using the "add exercise" button
   
@@ -41,9 +44,29 @@ To view a workout, click the "Select Workout" button. Select from the dropdown l
   * [JQuery]()
   * [Ajax]()
 ## Known issues
-  * Added an exercises to any existing workout, will display the last created workout instead of the workout that was added to.
+  * Added an exercises to any existing workout, will display the last created workout instead of the workout that was added to
   
 ## Future Features
   * Be able to update and delete exercises and workouts
+  
 ## Images
+### Default display when no workouts exist
+![image-1](https://github.com/E-Huynh/workout-tracker/blob/master/public/images/image-1.png?raw=true)
+
+### Create a new workout
+![image-2](https://github.com/E-Huynh/workout-tracker/blob/master/public/images/image-2.png?raw=true)
+
+### Exercise form and display after creating a workout
+![image-3](https://github.com/E-Huynh/workout-tracker/blob/master/public/images/image-3.png?raw=true)
+
+### Add new "flies" exercise to existing chest workout
+![image-4](https://github.com/E-Huynh/workout-tracker/blob/master/public/images/image-4.png?raw=true)
+
+### Flies auto-populates below
+![image-5](https://github.com/E-Huynh/workout-tracker/blob/master/public/images/image-5.png?raw=true)
+
+### Select and view existing workouts
+![image-6](https://github.com/E-Huynh/workout-tracker/blob/master/public/images/image-6.png?raw=true)
+![image-7](https://github.com/E-Huynh/workout-tracker/blob/master/public/images/image-7.png?raw=true)
+
 
