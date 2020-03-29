@@ -2,7 +2,9 @@ const db = require('../models');
 // Creation of a test excercise schema
 module.exports = {
     create: function (req, res) {
+        // console.log('req.body.workout: ',req.body.workout)
         db.excercise.create(req.body)
+            .then(({_id}) => db.workout.findOneAndUpdate({name: req.body.workout}, { $push: { excercises: _id } }, { new: true }))
             .then(dbExcercise => {
                 res.status(200).json(dbExcercise);
             })

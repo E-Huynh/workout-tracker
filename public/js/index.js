@@ -29,7 +29,12 @@ $(document).ready(function () {
             $('#setsInput').val('');
             $('#repsInput').val('');
             $('#weightInput').val('');
-        }).catch(err => {
+        }).then(function(data) {
+            $.get('/api/workout', function (data){
+                displayWorkoutHtml(data)
+            })
+        })
+        .catch(err => {
             console.log('err: ', err);
         })
     })
@@ -46,7 +51,7 @@ $(document).ready(function () {
     // redirect to select workout page
     $('.card-content').on('click', '#selectWorkoutBtn', function () {
         let workout = $('#selectWorkoutInput').val();
-        console.log('Select workout: ', workout)
+        // console.log('Select workout: ', workout)
         // somehow display work selected
     })
 
@@ -60,6 +65,7 @@ $(document).ready(function () {
         $.post('/api/workout', workoutName, function (APIdata) {
             $('#workoutInput').val('')
             generateAddExcerciseHtml(workoutName, true, workoutName)
+            // console.log('APIdata: ', APIdata)
         })
         .catch(err => {
             err.responseJSON && err.responseJSON.message ? console.log(err.responseJSON.message) : console.log(err.responseJSON.errmsg)
@@ -74,7 +80,7 @@ $(document).ready(function () {
                 $('#displayArea').html('Workout Tracker Content');
             } else {
                 $('#displayHeader').html(`${data[0].name}`);
-                $('#displayArea').html(`${data[0].excercises} excercises`);
+                $('#displayArea').html(`${data[0].excercises[0].excercise}`);
                 displayWorkoutHtml(data)
             }
         }).catch(err => {
@@ -232,20 +238,30 @@ $(document).ready(function () {
             `)
     }
     function displayWorkoutHtml(data) {
-        for (let i = 0; i < data[0].excercises; i++) {
-            console.log('in for loop')
-            $('#tileDisplay').html(`
+        // console.log('data: ', data)
+        // console.log('displayWorkoutHtml array: ', data[0].excercises)
+        // console.log('displayWorkoutHtml excercise: ', data[0].excercises[0].excercise)
+        const excerciseArray = data[0].excercises;
+        let tileHtml = '';
+        for (let i = 0; i < excerciseArray.length; i++) {
+            const name = excerciseArray[i].excercise;
+            const sets = excerciseArray[i].sets;
+            const reps = excerciseArray[i].reps;
+            const weight = excerciseArray[i].weight;
+            newHtml = `
             <div class="tile is-parent is-4">
               <article class="tile is-child box">
-                <p class="title">Excercise Name</p>
+                <p class="title">${name}</p>
                 <div class="content">
-                  <p>Sets: </p>
-                  <p>Reps: </p>
-                  <p>Weights: </p>
+                  <p>Sets: ${sets}</p>
+                  <p>Reps: ${reps}</p>
+                  <p>Weights: ${weight}</p>
                 </div>
               </article>
             </div>
-            `)
+            `
+            tileHtml += newHtml;
         }
+        $('#tileDisplay').html(tileHtml);
     }
 })

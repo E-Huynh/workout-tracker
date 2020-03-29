@@ -12,8 +12,11 @@ module.exports = {
     findAllWorkouts: function (req, res) {
         db.workout
             .find().sort({name: 1})
+            .populate('excercises')
             .then(dbWorkout => {
                 // creates alphabetical workout name list
+                console.log('dbWorkout: ', dbWorkout)
+
                 const workoutList = [];
                 dbWorkout.forEach(function (data) {
                     workoutList.push(data.name);
@@ -25,9 +28,10 @@ module.exports = {
     findLastByDate: function (req, res) {
         db.workout
             .find({}).limit(1).sort({date: -1})
-            // .populate('excercises')
+            .populate('excercises')
             .then(dbWorkout => {
                 // console.log('dbWorkout: ', dbWorkout)
+                // console.log('dbWorkout: ', dbWorkout[0].excercises)
                 res.status(200).json(dbWorkout);
             })
             .catch(err => res.status(422).json(err));
