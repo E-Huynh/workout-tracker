@@ -10,7 +10,7 @@ Erik.W.Huynh@Gmail.com
 
 [LinkedIn](https://www.linkedin.com/in/erik-huynh-228321196/)
 
-[Portfolio](https://e-huynh.github.io/updated_portfolio/)
+[Portfolio](https://e-huynh.github.io/portfolio-gram/)
 ## Purpose
 Workout Tracker allows a user to create new workouts and and store exercises within them. Users can create as many workouts and exercises as needed.
 ## Functionality
